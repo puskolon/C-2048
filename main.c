@@ -75,15 +75,14 @@ void move_numb(int table[MAX_R][MAX_C]) {
 				if (table[i][j] != 0) {
 					r = i;
 					c = j;
-					while ( r != 0) {
+					while ( r != 0 ) {
 						if (table[r-1][c] == table[r][c]) {
 							table[r-1][c] *= 2;
 							table[r][c] = 0;
 
-						} else {
+						} else if ( table[r-1][c] == 0 ) {
 							table[r-1][c] = table[r][c];
 							table[r][c] = 0;
-							
 						}
 						r--;
 					}
@@ -99,12 +98,12 @@ void move_numb(int table[MAX_R][MAX_C]) {
 					r = i;
 					c = j;
 
-					while ( c != 0) {
+					while ( c != 0 && table[r][c-1] == 0 ) {
 						if (table[r][c-1] == table[r][c]) {
 							table[r][c-1] *= 2;
 							table[r][c] = 0;
 
-						} else {
+						} else if ( table[r][c-1] == 0 ) {
 							table[r][c-1] = table[r][c];
 							table[r][c] = 0;
 						}
@@ -122,18 +121,16 @@ void move_numb(int table[MAX_R][MAX_C]) {
 					r = i;
 					c = j;
 
-					while ( r != 3) {
+					while ( r != 3 && table[r+1][c] == 0 ) {
 						if (table[r+1][c] == table[r][c]) {
 							table[r+1][c] *= 2;
 							table[r][c] = 0;
 
-						} else {
+						} else if ( table[r+1][c] == 0 ) {
 							table[r+1][c] = table[r][c];
 							table[r][c] = 0;
-							print_table(table);
-						}
+						}						
 						r++;
-						printf("%d", r);
 					}
 				}
 			}
@@ -147,12 +144,12 @@ void move_numb(int table[MAX_R][MAX_C]) {
 					r = i;
 					c = j;
 
-					while ( c != 3) {
+					while ( c != 3 && table[r][c+1] == 0 ) {
 						if (table[r][c+1] == table[r][c]) {
 							table[r][c+1] *= 2;
 							table[r][c] = 0;
 
-						} else {
+						} else if ( table[r][c+1] == 0 ) {
 							table[r][c+1] = table[r][c];
 							table[r][c] = 0;
 						}
